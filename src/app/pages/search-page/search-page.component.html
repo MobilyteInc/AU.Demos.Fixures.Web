@@ -1,0 +1,16 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+
+
+<div class="search-container">
+
+  <form class="search-form">
+    <mat-form-field class="text-search">
+      <input matInput placeholder="Search" [formControl]="searchField" >
+	  <button mat-raised-button color="primary" matSuffix (click)="search()" [attr.aria-label]="'search'" [attr.aria-pressed]="hide">Search
+	  </button>
+    </mat-form-field>
+  </form>
+
+  <app-search-results [data]="searchResults$ | async" [headerVal]="displayedColumns"></app-search-results>
+  
+</div>

@@ -1,0 +1,23 @@
+<div >
+ 	<table mat-table [dataSource]="data" style="width:100%">
+    <ng-container matColumnDef="fixtureName">
+      <th mat-header-cell *matHeaderCellDef> Fixture </th>
+      <td mat-cell *matCellDef="let element">a <span [ngStyle]="{'color': element.homeTeam.colour}">{{element.homeTeam.name}}</span> vs <span [ngStyle]="{'color': element.awayTeam.colour}">{{element.awayTeam.name}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kickoff">
+      <th mat-header-cell *matHeaderCellDef> Kick-off </th>
+      <td mat-cell *matCellDef="let element"> {{element.kickOff | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="venue">
+      <th mat-header-cell *matHeaderCellDef> Venue </th>
+      <td mat-cell *matCellDef="let element"> {{element.venue.name}}, {{element.venue.city}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="headerVal"></tr>
+    <tr mat-row *matRowDef="let row; columns: headerVal;"></tr>
+  </table>
+  <div class="noData" *ngIf="!data || data.length === 0">No records found, please search with some key value</div>
+ 
+</div>
